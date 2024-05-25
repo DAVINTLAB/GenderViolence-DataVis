@@ -1,5 +1,4 @@
-# Explorando Dados Governamentais para Prevenção da
-Violência de Gênero: Uma Abordagem Visual
+# Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual
 
 Este repositório serve como um guia detalhado sobre como processar e analisar dados governamentais abertos relacionados à violência contra as mulheres. Aqui você encontrará informações sobre o processo de coleta de dados e pré-processamento, permitindo recriar nossa pesquisa.
 

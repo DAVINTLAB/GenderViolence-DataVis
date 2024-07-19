@@ -1,6 +1,6 @@
 # Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual
 
-Este repositório serve como um guia detalhado sobre como processar e analisar dados governamentais abertos relacionados à violência contra as mulheres. Aqui você encontrará informações sobre o processo de coleta de dados e pré-processamento, permitindo recriar nossa pesquisa.
+Este repositório serve como um guia detalhado sobre como processar e analisar dados governamentais abertos relacionados à violência contra as mulheres. Aqui você encontrará informações sobre o processo de coleta de dados e pré-processamento, permitindo reproduzir nossa pesquisa.
 
 
 ## Preparação de Dados
@@ -71,7 +71,7 @@ Os dados foram coletados do portal de dados abertos do Ministério dos Direitos 
 | 2023-1 (hashs filtrados).xlsx     | -                                 |
 | 2023-2 (hashs filtrados).xlsx     | -                                 | 
 
-4. `Padronização de Profissões e Locais`: Scripts em Python padronizaram nomes de municípios e agruparam profissões em seis categorias com base em dados do ENEM.
+4. `Padronização de Profissões e Locais`: Scripts em Python padronizaram nomes de municípios e agruparam profissões em seis categorias, equivalentes às categorias usadas em dados do ENEM.
 
 | Arquivos de Entrada               | Arquivos de Saída                 |
 |-----------------------------------|-----------------------------------|
@@ -87,6 +87,12 @@ Os dados foram coletados do portal de dados abertos do Ministério dos Direitos 
 | 2020-2 a 2023.xlsx                | -                                 |
 
 > Essas etapas de pré-processamento permitiram a criação de conjuntos de dados abrangentes e limpos para análise e visualização.
+
+## Referência
+
+Referêncie este trabalho citando o artigo indicado abaixo.
+
+PATRICIO, Eduarda; ZURAWSKI, Gabriel; ROLLWAGEN, André; MANSSOUR, Isabel. Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual.  In Anais do XII Workshop de Computação Aplicada em Governo Eletrônico (WCGE), julho 21, 2024, Brasília/DF, Brasil. SBC, Porto Alegre, Brasil, p. 145-156. ISSN 2763-8723. DOI: https://doi.org/10.5753/wcge.2024.2966.
 
 ## Autores
 

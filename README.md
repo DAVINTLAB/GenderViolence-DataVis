@@ -90,7 +90,7 @@ Os dados foram coletados do portal de dados abertos do Ministério dos Direitos 
 
 ## Referência
 
-Referêncie este trabalho citando o artigo indicado abaixo.
+Referencie este trabalho citando o artigo indicado abaixo.
 
 PATRICIO, Eduarda; ZURAWSKI, Gabriel; ROLLWAGEN, André; MANSSOUR, Isabel. Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual.  In Anais do XII Workshop de Computação Aplicada em Governo Eletrônico (WCGE), julho 21, 2024, Brasília/DF, Brasil. SBC, Porto Alegre, Brasil, p. 145-156. ISSN 2763-8723. DOI: https://doi.org/10.5753/wcge.2024.2966.
 

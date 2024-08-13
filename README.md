@@ -7,6 +7,8 @@ Este repositório serve como um guia detalhado sobre como processar e analisar d
 
 A preparação dos dados envolveu o uso do Tableau Prep Builder e Python. O Tableau Prep Builder foi usado para processar e organizar diversas etapas de processamento de dados, como limpeza e união de linhas ou colunas de conjuntos de dados em um único arquivo. Python, com bibliotecas como Pandas e NumPy, facilitou a manipulação de dados e métodos estatísticos.
 
+São fornecidas duas formas de tratamento: através do uso do programa Tableau Prep Builder e outra com o uso apenas da linguagem Python - a qual foi realizada posteriormente buscando tornar o processo mais acessível àqueles que não possuíssem uma licença para o uso do programa. 
+
 ## Coleta de Dados
 
 Os dados foram coletados do portal de dados abertos do Ministério dos Direitos Humanos e da Cidadania. Inicialmente, 16 arquivos .csv estavam disponíveis a partir de 2014, organizados por ano ou semestre. No entanto, apenas 15 arquivos foram usados neste trabalho, pois o arquivo "Resumo 2019" foi excluído devido ao seu resumo consolidado. Os dados incluíam informações como cidade, estado, horário do relato, identidade do relator, status de risco da vítima, local da violência e dados demográficos como idade, educação, renda e profissão da vítima e suspeito.
@@ -16,7 +18,7 @@ Os dados foram coletados do portal de dados abertos do Ministério dos Direitos 
 
 
 
-## Etapas de Pré-processamento
+## Etapas de Pré-processamento com o Tableau Prep Builder
 
 1. `Filtragem e Conversão`: Dados a partir de 2020 incluíam relatos além da violência doméstica. Um filtro foi aplicado para focar nos dados de violência doméstica, e os arquivos foram convertidos para o formato .xlsx usando o Tableau Prep Builder.
 

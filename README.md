@@ -73,15 +73,48 @@ Visualizações públicas disponíveis no [Tableau Public] (https://public.table
 - Frequência Temporal  
 - Contexto da Violência  
 
-## 🔬 Clusterização
+## 🧠 Clusterização: Metodologia e Testes Realizados
 
-Foram realizados testes com os algoritmos **K-Means** e **K-Modes**, utilizando diferentes combinações de variáveis. Apesar da proposta promissora, os resultados revelaram:
+Com o objetivo de identificar possíveis **padrões ocultos** entre vítimas e suspeitos nos dados do Ligue 180, foi conduzida uma série de experimentos com algoritmos de **clusterização não supervisionada**. Os testes buscaram explorar diferentes combinações de variáveis e abordagens para avaliar a viabilidade dessa técnica no contexto da violência de gênero.
 
-- Alta heterogeneidade dos dados  
-- Baixa similaridade entre agrupamentos  
-- Elevada taxa de valores ausentes  
+### 🔎 O que foi feito
 
-**Conclusão:** os dados atuais não oferecem estrutura adequada para uma segmentação efetiva. A qualidade dos dados precisa ser aprimorada.
+- Aplicação dos algoritmos **K-Modes** (para dados categóricos) e **K-Means** (com codificações apropriadas).
+- Recorte temporal: **2014–2019**, devido à maior consistência dos dados nesse período.
+- Uso de **codificações One-Hot e Binária** para adaptar os dados ao K-Means.
+- Repetição dos testes com recorte regional: **estado do Rio Grande do Sul**.
+
+### 🧪 Testes Realizados
+
+1. **Teste 1 — Variáveis amplas**  
+   Incluiu quase todas as colunas disponíveis, exceto município, tipo de violação e data (variáveis com alta cardinalidade).  
+   > 🔸 **Resultado:** Alta dispersão interna dos clusters e baixa similaridade.
+
+2. **Teste 2 — Perfil básico (vítima + suspeito)**  
+   Variáveis: sexo, faixa etária, grau de instrução e escolaridade de vítima e suspeito.  
+   > 🔸 **Resultado:** Agrupamentos pouco coesos e inconclusivos.
+
+3. **Teste 3 — Perfil da vítima**  
+   Mesma estrutura do teste anterior, mas focado apenas em variáveis da vítima.  
+   > 🔸 **Resultado:** Nenhuma estrutura clara de agrupamento.
+
+4. **Teste 4 — Perfil da vítima (codificação alternativa)**  
+   Mesmas variáveis do teste 3, com mudança na codificação e métrica de avaliação.  
+   > 🔸 **Resultado:** Resultados semelhantes ao teste anterior.
+
+5. **Teste 5 — Recorte regional (RS)**  
+   Aplicação dos testes anteriores restrita ao estado do **Rio Grande do Sul**.  
+   > 🔸 **Resultado:** Resultados semelhantes aos nacionais, sugerindo alta complexidade nos dados.
+
+6. **Teste 6 — Comparação forçada (k = 4 clusters)**  
+   Todos os algoritmos foram forçados a gerar **quatro clusters** para comparação direta.  
+   > 🔸 **Resultado:** Baixa concordância entre K-Means e K-Modes, exceto entre variações do K-Means (concordância de até 70%).
+
+---
+
+### ⚠️ Conclusão
+
+Apesar da proposta promissora, os testes de clusterização **não revelaram agrupamentos consistentes**. A alta taxa de valores ausentes, a heterogeneidade dos registros e a complexidade da realidade social retratada dificultam a segmentação com os dados atuais. A abordagem, contudo, permanece relevante como ferramenta exploratória e poderá ser retomada com bases mais completas no futuro.
 
 ---
 

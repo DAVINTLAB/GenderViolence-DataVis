@@ -1,107 +1,100 @@
-# Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual
+# 📊 Entrelinhas da Violência
 
-Este repositório serve como um guia detalhado sobre como processar e analisar dados governamentais abertos relacionados à violência contra as mulheres. Aqui você encontrará informações sobre o processo de coleta de dados e pré-processamento, permitindo reproduzir nossa pesquisa.
+> Visualizando e analisando dados sobre violência contra a mulher no Brasil com foco em reprodutibilidade, acessibilidade e impacto social.
 
+Este projeto explora dados governamentais disponibilizados pelo serviço **Ligue 180** com o objetivo de identificar padrões demográficos, temporais e geográficos da violência contra a mulher no Brasil. A iniciativa alia **ciência de dados**, **visualização interativa** e **transparência metodológica** para apoiar políticas públicas e ampliar o entendimento sobre esse grave problema social.
 
-## Preparação de Dados
+---
 
-A preparação dos dados envolveu o uso do Tableau Prep Builder e Python. O Tableau Prep Builder foi usado para processar e organizar diversas etapas de processamento de dados, como limpeza e união de linhas ou colunas de conjuntos de dados em um único arquivo. Python, com bibliotecas como Pandas e NumPy, facilitou a manipulação de dados e métodos estatísticos.
+## 🚀 Objetivos
 
-São fornecidas duas formas de tratamento: através do uso do programa Tableau Prep Builder e outra com o uso apenas da linguagem Python - a qual foi realizada posteriormente buscando tornar o processo mais acessível àqueles que não possuíssem uma licença para o uso do programa. 
+- Desenvolver uma **metodologia reprodutível** para tratamento de dados do Ligue 180.
+- Criar **dashboards interativos** que permitam exploração dos dados por pesquisadores, gestores públicos e sociedade civil.
+- Aplicar técnicas de **clusterização** para identificar possíveis perfis de vítimas e suspeitos.
+- **Disponibilizar publicamente** todas as ferramentas e códigos utilizados.
+- Produzir **insights e recomendações** para melhorar a coleta e divulgação de dados governamentais.
 
-## Coleta de Dados
+---
 
-Os dados foram coletados do portal de dados abertos do Ministério dos Direitos Humanos e da Cidadania. Inicialmente, 16 arquivos .csv estavam disponíveis a partir de 2014, organizados por ano ou semestre. No entanto, apenas 15 arquivos foram usados neste trabalho, pois o arquivo "Resumo 2019" foi excluído devido ao seu resumo consolidado. Os dados incluíam informações como cidade, estado, horário do relato, identidade do relator, status de risco da vítima, local da violência e dados demográficos como idade, educação, renda e profissão da vítima e suspeito.
-- [Ministério dos Direitos Humanos e da Cidadania](https://www.gov.br/mdh/pt-br/acesso-a-informacao/dados-abertos)
-- [Central de Atendimento à Mulher (Ligue 180)](https://www.gov.br/mdh/pt-br/acesso-a-informacao/dados-abertos/ligue180)
-- [Disque Direitos Humanos (Disque 100)](https://www.gov.br/mdh/pt-br/acesso-a-informacao/dados-abertos/disque100)
+## 🛠️ Tecnologias e Ferramentas
 
+- **Python** (Pandas, NumPy)
+- **Tableau Desktop / Tableau Public**
+- Dados do **Ministério dos Direitos Humanos** e **IBGE**
 
+---
 
-## Etapas de Pré-processamento com o Tableau Prep Builder
+## 📥 Coleta de Dados
 
-1. `Filtragem e Conversão`: Dados a partir de 2020 incluíam relatos além da violência doméstica. Um filtro foi aplicado para focar nos dados de violência doméstica, e os arquivos foram convertidos para o formato .xlsx usando o Tableau Prep Builder.
+Os dados foram obtidos a partir das seguintes fontes:
 
-| Arquivos de Entrada               | Arquivos de Saída   |
-|-----------------------------------|---------------------|
-| ligue180-2014.csv                 | 2014.xlsx           |
-| ligue180-2015.csv                 | 2015.xlsx           |
-| ligue180-2016.csv                 | 2016.xlsx           |
-| ligue180-2017.csv                 | 2017.xlsx           |
-| ligue180-2018.csv                 | 2018-1.xlsx         |
-| ligue180-nov-2018.csv             | 2018-2.xlsx         |
-| ligue180-2019.csv                 | 2019.xlsx           |
-| primeiro-semestre-2020.csv        | 2020-1.xlsx         |
-| segundo-semestre-2020.csv         | 2020-2.xlsx         |
-| primeiro-semestre-2021.csv        | 2021-1.xlsx         |
-| segundo-semestre-2021.csv         | 2021-2.xlsx         |
-| primeiro-semestre-2022.csv        | 2022-1.xlsx         |
-| segundo-semestre-2022.csv         | 2022-2.xlsx         |
-| primeiro-semestre-2023.csv        | 2023-1.xlsx         |
-| segundo-semestre-2023.csv         | 2023-2.xlsx         |
+- [Portal de Dados Abertos do Ministério dos Direitos Humanos](https://www.gov.br/mdh/pt-br/acesso-a-informacao/dados-abertos/ligue180)  
+  > Contém os dados de denúncias do Ligue 180 entre 2014 e 2023, organizados em arquivos CSV.
 
-2. `Remoção de Hashes Repetidos`: Scripts em Python foram usados para remover hashes de relatos repetidos a partir de 2020.
+- [Censo Demográfico 2022 - IBGE](https://tinyurl.com/y32c879j)  
+  > Utilizado para obtenção de dados complementares sobre população, raça e escolaridade por município.
 
-| Arquivos de Entrada   | Arquivos de Saída                 |
-|-----------------------|-----------------------------------|
-| 2020-1.xlsx           | 2020-1 (hashs filtrados).xlsx     |
-| 2020-2.xlsx           | 2020-2 (hashs filtrados).xlsx     |
-| 2021-1.xlsx           | 2021-1 (hashs filtrados).xlsx     |
-| 2021-2.xlsx           | 2021-2 (hashs filtrados).xlsx     |
-| 2022-1.xlsx           | 2022-1 (hashs filtrados).xlsx     |
-| 2022-2.xlsx           | 2022-2 (hashs filtrados).xlsx     |
-| 2023-1.xlsx           | 2023-1 (hashs filtrados).xlsx     |
-| 2023-2.xlsx           | 2023-2 (hashs filtrados).xlsx     |
+---
 
-3. `União e Limpeza de Tabelas`: As tabelas eram anuais até 2019 e, depois, passaram a ser semestrais. Quatro mudanças nos métodos de coleta de dados ocorreram durante o período. Tabelas com o mesmo formato foram unidas e limpas para remover inconsistências ou dados faltantes, gerando quatro conjuntos de dados cobrindo diferentes períodos.
+## 🧹 Etapas do Pré-processamento
 
-| Arquivos de Entrada               | Arquivos de Saída                 |
-|-----------------------------------|-----------------------------------|
-| 2014.xlsx                         | 2014 a 2018-1.xlsx                |
-| 2015.xlsx                         | -                                 |
-| 2016.xlsx                         | -                                 |
-| 2017.xlsx                         | -                                 |
-| 2018-1.xlsx                       | -                                 |
-| 2018-2.xlsx                       | 2018-2 a 2019.xlsx                |
-| 2019.xlsx                         | -                                 |
-| 2020-1 (hashs filtrados).xlsx     | 2020-1.xlsx                       |
-| 2020-2 (hashs filtrados).xlsx     | 2020-2 a 2023.xlsx                |
-| 2021-1 (hashs filtrados).xlsx     | -                                 |
-| 2021-2 (hashs filtrados).xlsx     | -                                 |
-| 2022-1 (hashs filtrados).xlsx     | -                                 |
-| 2022-2 (hashs filtrados).xlsx     | -                                 |
-| 2023-1 (hashs filtrados).xlsx     | -                                 |
-| 2023-2 (hashs filtrados).xlsx     | -                                 | 
+O pré-processamento foi estruturado em três etapas principais para garantir a qualidade e padronização dos dados:
 
-4. `Padronização de Profissões e Locais`: Scripts em Python padronizaram nomes de municípios e agruparam profissões em seis categorias, equivalentes às categorias usadas em dados do ENEM.
+### 🔹 Etapa 1 — Padronização e Limpeza Inicial
+- Padronização dos nomes das colunas (com base em um dicionário comum).
+- Filtragem dos registros para incluir apenas denúncias de **violência doméstica**.
+- Remoção de registros duplicados.
+- Conversão de todos os valores para **maiúsculas sem acento**.
 
-| Arquivos de Entrada               | Arquivos de Saída                 |
-|-----------------------------------|-----------------------------------|
-| 2020-2 a 2023.xlsx                | 2020-2 a 2023 (padronizado).xlsx  |
+### 🔹 Etapa 2 — Consolidação por Período
+- Agrupamento dos dados em quatro grandes blocos, conforme mudanças no formato ao longo dos anos:
+  - 2014 a nov/2018
+  - Dez/2018 a 2019
+  - 1º semestre de 2020
+  - 2º semestre de 2020 a 2023
+- Padronização de nomes de municípios e países.
+- Classificação de profissões com base no [dicionário do ENEM](https://tinyurl.com/2s4f5f2k).
 
-5. `Combinação de Tabelas de Formatos Diferentes`: Os quatro conjuntos de dados foram combinados para criar um conjunto abrangente de 2014 a 2023, embora algumas colunas tenham perdido consistência, especialmente em relação aos níveis de educação.
+### 🔹 Etapa 3 — Dataset Unificado
+- Integração dos quatro blocos em um único **dataset final consolidado**.
+- Padronização das colunas comuns entre os períodos.
+- Geração de um conjunto de dados final apto para análises temporais e geográficas.
 
-| Arquivos de Entrada               | Arquivos de Saída                 |
-|-----------------------------------|-----------------------------------|
-| 2014 a 2018-1.xlsx                | 2014 a 2023.xlsx                  |
-| 2018-2 a 2019.xlsx                | -                                 |
-| 2020-1.xlsx                       | -                                 |
-| 2020-2 a 2023.xlsx                | -                                 |
+---
 
-> Essas etapas de pré-processamento permitiram a criação de conjuntos de dados abrangentes e limpos para análise e visualização.
+## 📉 Dashboards Interativos
 
-## Referência
+Visualizações públicas disponíveis no [Tableau Public] (https://public.tableau.com/app/profile/gabriel.zurawski/viz/GenderViolence-DataVis/Incio):
 
-Referencie este trabalho citando o artigo indicado abaixo.
+- Perfil da Vítima
+- Perfil do Suspeito  
+- Relação Vítima–Suspeito  
+- Distribuição Geográfica  
+- Frequência Temporal  
+- Contexto da Violência  
 
-PATRICIO, Eduarda; ZURAWSKI, Gabriel; ROLLWAGEN, André; MANSSOUR, Isabel. Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual.  In Anais do XII Workshop de Computação Aplicada em Governo Eletrônico (WCGE), julho 21, 2024, Brasília/DF, Brasil. SBC, Porto Alegre, Brasil, p. 145-156. ISSN 2763-8723. DOI: https://doi.org/10.5753/wcge.2024.2966.
+## 🔬 Clusterização
 
-## Autores
+Foram realizados testes com os algoritmos **K-Means** e **K-Modes**, utilizando diferentes combinações de variáveis. Apesar da proposta promissora, os resultados revelaram:
 
-Somos membros do Laboratório de Visualização e Interação de Dados (DaVInt) na PUCRS:
-- Isabel H. Manssour - Coordenador
-- Eduarda dos Santos Patricio - Integrante
-- Gabriel Zurawski de Souza - Integrante
+- Alta heterogeneidade dos dados  
+- Baixa similaridade entre agrupamentos  
+- Elevada taxa de valores ausentes  
 
-Mais informações podem ser encontradas [aqui](https://www.inf.pucrs.br/davint/).
+**Conclusão:** os dados atuais não oferecem estrutura adequada para uma segmentação efetiva. A qualidade dos dados precisa ser aprimorada.
 
+---
+
+## 📚 Trabalho Original
+
+Este projeto foi inspirado e expandido a partir do trabalho original [**"Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual"**](https://sol.sbc.org.br/index.php/wcge/article/view/29534), publicado e premiado como melhor artigo no **Workshop de Computação Aplicada em Governo Eletrônico (WCGE 2024)**.
+
+PATRICIO, Eduarda; ZURAWSKI, Gabriel; ROLLWAGEN, André; MANSSOUR, Isabel. Explorando Dados Governamentais para Prevenção da Violência de Gênero: Uma Abordagem Visual. In: WORKSHOP DE COMPUTAÇÃO APLICADA EM GOVERNO ELETRÔNICO (WCGE), 12. , 2024, Brasília/DF. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2024 . p. 145-156. ISSN 2763-8723. DOI: https://doi.org/10.5753/wcge.2024.2966.
+
+---
+
+## 🤝 Agradecimentos
+
+Agradecimentos especiais à **Isabel Harb Manssour** (orientadora) e aos colaboradores **Eduarda Patricio**, **André Rollwagen**, **Vinícius Pedroso** e **Giovanna Castro**.
+
+---
